@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Header() {
+export default function Calender() {
     
     return (
-        <div id="Header">
+        <div id="Calender">
 
         </div>
     )
