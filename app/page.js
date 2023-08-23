@@ -1,6 +1,6 @@
 import Hero from "./Components/Hero"
 import Events from "./Components/Events"
-import Calender from "./Components/Calender"
+import Calendar from "./Components/Calendar"
 import Photos from "./Components/Photos"
 import Newsletter from "./Components/Newsletter"
 
@@ -11,7 +11,7 @@ export default function About() {
             <body>
                 <Hero/>
                 <Events/>
-                <Calender/>
+                <Calendar/>
                 <Photos/>
                 <Newsletter/>
             </body>
