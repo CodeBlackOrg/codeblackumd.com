@@ -40,11 +40,43 @@ export default function Eboard() {
         <style>
             {`
                 #Eboard {
-
+                   display: flex;
+                   position: relative;
+                   width: 65vw;
+                   height: 350vh;
+                   justify-content: center;
+                   flex-direction: column;
+                   border: 1px solid red; 
+                }
+                #EboardContainer {
+                    display: flex;
+                    position: relative;
+                    width: 98%;
+                    height: 100%;
+                    justify-content: center;
+                    border: 1px solid red; 
+                }
+                #EboardTitleContainer {
+                    display: flex;
+                    position: relative:
+                    width: 100%;
+                    height: 5%;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid red; 
+                }
+                #EboardTitle {
+                    font-size: 40px;
+                    font-family:  test;
+                    text-align: center;
                 }
                 #EboardMembersContainer {
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+                }
+                #EboardMember {
+                    display: flex;
+                    position: relative;
                 }
             `}
         </style>

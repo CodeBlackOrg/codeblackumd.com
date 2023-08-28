@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 require('dotenv').config()
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
   projectId: process.env.REACT_APP_PROJECTID,
@@ -17,4 +17,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const db = getFirestore();
+export const db = getFirestore(app);
