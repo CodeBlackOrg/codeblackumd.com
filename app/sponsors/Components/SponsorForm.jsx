@@ -49,7 +49,32 @@ export default function SponsorForm() {
         <style>
             {`
                 #SponsorForm {
-                    
+                    display: flex;
+                    position: relative;
+                    width: 99.7vw;
+                    height: 100vh; 
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid red;
+                }
+                #SponsorFormContainer {
+                    display: flex;
+                    position: relative;
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #SponsorsFormHeaderContainer {
+                    display: flex;
+                    position: relative;
+                    width: 90%;
+                    height: 30%;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 1px solid red;
+
                 }
             `}
         </style>
