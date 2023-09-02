@@ -1,13 +1,13 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import { db, firebaseConfig } from "../../env";
+import { db } from "../../env";
 import { CalendarMonths, CalendarYears, CalendarDates } from "./CalendarDates";
-import { collection, addDoc, serverTimestamp, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 
-export default function Calendar() {
-    const [events, setEvents] = useState([]);
+export default function Calendar(Date, Description, Image, Location, Title) {
+    const [events, setEvents] = useState();
 
     const prevMonth = () => {
         console.log('prevMonth');
@@ -28,16 +28,16 @@ export default function Calendar() {
     }
 
     useEffect(() => {
-        async function getCalendar() {
-            const calendarCol = collection(db, 'Calendar');
-            const calendarSnapshot = await getDocs(calendarCol);
-            const calendarList = calendarSnapshot.docs.map(doc => doc.data());
-            setEvents(calendarList);
-            console.log(calendarList);
+        const getCalendar = async () => {
+            const querySnapshot = await getDocs(collection(db, "Calendar"));
+            console.log(querySnapshot);
+            querySnapshot.forEach((doc) => {
+              setEvents(doc.data());
+            });
+            console.log(events);
         }
-        getCalendar(db);
+        getCalendar();
     }, []);
-    
     
     return (
         <div id="Calendar">
@@ -72,7 +72,7 @@ export default function Calendar() {
                                         <div key={day.id}>
                                             <div id='CalendarEvent'>
                                                 <p id="Day">{day}</p>
-                                                <div id="Event" onClick={() => showModal(events.Date, events.Description, events.Image, events.Location, events.Title)}>{events.Name}</div>
+                                                <div id="Event" onClick={() => showModal(events.Date, events.Description, events.Image, events.Location, events.Title)}>{events.Title}</div>
                                             </div>
                                             <div id='Modal'>
                                                 <div id='ModalContainer'>
