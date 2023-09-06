@@ -74,10 +74,6 @@ export default function Eboard() {
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
                 }
-                #EboardMember {
-                    display: flex;
-                    position: relative;
-                }
             `}
         </style>
         </div>
