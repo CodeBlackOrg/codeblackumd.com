@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../env";
 import { CalendarMonths, CalendarYears, CalendarDates } from "./CalendarDates";
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, query, onSnapshot } from 'firebase/firestore';
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 
-export default function Calendar(Date, Description, Image, Location, Title) {
-    const [events, setEvents] = useState();
+export default function Calendar() {
+    const [events, setEvents] = useState([]);
 
     const prevMonth = () => {
         console.log('prevMonth');
@@ -29,12 +29,18 @@ export default function Calendar(Date, Description, Image, Location, Title) {
 
     useEffect(() => {
         const getCalendar = async () => {
-            const querySnapshot = await getDocs(collection(db, "Calendar"));
-            console.log(querySnapshot);
-            querySnapshot.forEach((doc) => {
-              setEvents(doc.data());
-            });
-            console.log(events);
+            try {
+                const response = await query(collection(db, "Calendar"));
+                console.log(response);
+                const calendarSnapshot = onSnapshot(response, (querySnapshot) => {
+                    let cArr = [];
+                    querySnapshot.forEach((doc) => {
+                        cArr.push({...doc.data(), id: doc.id});
+                    });
+                    setEvents(cArr);
+                }) 
+                console.log("L",events);
+            } catch(error) {console.log(error)}
         }
         getCalendar();
     }, []);
@@ -70,21 +76,26 @@ export default function Calendar(Date, Description, Image, Location, Title) {
                                 <div id="CalendarTableContainer">
                                     {CalendarDates.map((day) => (
                                         <div key={day.id}>
+                                            {events.map((event) => (
+                                               <div key={event.id}>
+                                                <p>{event}</p>
+                                               </div> 
+                                            ))}
                                             <div id='CalendarEvent'>
-                                                <p id="Day">{day}</p>
-                                                <div id="Event" onClick={() => showModal(events.Date, events.Description, events.Image, events.Location, events.Title)}>{events.Title}</div>
+                                                <p id="Day">{day.Title}</p>
+                                                <div id="Event" onClick={() => showModal(day.Date, day.Description, day.Image, day.Location, day.Title)}>{day.Title}</div>
                                             </div>
                                             <div id='Modal'>
                                                 <div id='ModalContainer'>
                                                     <div id='ModalHeader'>
-                                                        <p id='ModalTitle'>{events.Title}</p>
-                                                        <p id='ModalDate'>{events.Date}</p>
+                                                        <p id='ModalTitle'>{day.Title}</p>
+                                                        <p id='ModalDate'>{day.Date}</p>
                                                         <div id='ModalButton' onClick={closeModal}><GrClose/></div>
                                                     </div>
                                                     <div id='ModalBody'>
-                                                        <p id='ModalDescription'>{events.Description}</p>
-                                                        <p id='ModalLocation'>{events.Location}</p>
-                                                        <img id='ModalImage' src={events.Image} alt='Event Image'/>
+                                                        <p id='ModalDescription'>{day.Description}</p>
+                                                        <p id='ModalLocation'>{day.Location}</p>
+                                                        <img id='ModalImage' src={day.Image} alt='Event Image'/>
                                                     </div>
                                                 </div>
                                             </div>
