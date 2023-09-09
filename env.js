@@ -6,22 +6,20 @@ import { getFirestore } from "firebase/firestore";
 require('dotenv').config()
 
 export const firebaseConfig = {
-  // apiKey: process.env.REACT_APP_API_KEY,
-  // authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  // projectId: process.env.REACT_APP_PROJECTID,
-  // storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  // messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-  // appId: process.env.REACT_APP_APPID,
-  // measurementId: process.env.REACT_APP_MEASURMENTID,
-  apiKey: "AIzaSyCqWuiUgPlpaXRLRKDcqJuCoawqnO-9hC0",
-  authDomain: "codeblack-a757b.firebaseapp.com",
-  projectId: "codeblack-a757b",
-  storageBucket: "codeblack-a757b.appspot.com",
-  messagingSenderId: "603771662146",
-  appId: "1:603771662146:web:9403d6680ddc9eec8322db",
-  measurementId: "G-F3Z6B9C0FS",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASURMENTID,
 };
 
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-export const db = getFirestore(app);
+export const db = getFirestore(app, {
+  experimentalForceLongPolling: true, 
+  useFetchStreams: false, 
+})
+
+// change react app to next
