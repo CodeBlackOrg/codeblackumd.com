@@ -1,8 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import { db } from "../../env";
 import { CalendarMonths, CalendarYears, CalendarDates } from "./CalendarDates";
-import { collection, query, onSnapshot } from 'firebase/firestore';
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 
