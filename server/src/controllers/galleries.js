@@ -15,4 +15,4 @@ export default function getGalleryById(req, res, id) {
 
 export default function deleteGallery(req, res, id) {
     const deleteGallery = db.one(`DELETE FROM gallery WHERE id = ${id}`).catch(error => console.log(error))
-}
+} 
