@@ -1,4 +1,4 @@
-// File: /Users/beimnetak/Downloads/codeblack/app/about/layout.js
+// File: /Users/beimnetak/Downloads/codeblack/client/app/about/layout.js
 import * as entry from '../../../../app/about/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
