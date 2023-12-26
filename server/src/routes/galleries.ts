@@ -1,6 +1,6 @@
-export class GalleriesRoutes {
+export class GalleryRoutes {
     
-    static readonly getAllGalleries = '/gallery';
+    static readonly getAllGalleries = '/galleries';
 
     static readonly getGalleryByID = '/gallery/:id';
     
