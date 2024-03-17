@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const connection = {
-    connectionString: process.env.DB + "?sslmode=require"
+    connectionString: process.env.DB
 }
 
 const db = pgp()(connection);
