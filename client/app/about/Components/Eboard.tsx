@@ -30,7 +30,7 @@ export default function Eboard() {
                                     <p id="EboardMemberDescription">{member.desc}</p>
                                 </div>
                                 <div id="EboardMemberButtonContainer">
-                                   <button id="EboardMemberButton" href={member.link}><FaLinkedinIn/></button>
+                                   <a id="EboardMemberButton" href={member.link}><FaLinkedinIn/></a>
                                 </div>
                             </div>
                         </div>
