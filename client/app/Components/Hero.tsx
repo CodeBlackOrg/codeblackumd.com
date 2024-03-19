@@ -41,7 +41,7 @@ export default function Hero() {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        filter: brightness(55%);
+                        filter: brightness(60%);
                     }
 
                     #HeroTextImageContainer {
