@@ -42,6 +42,13 @@ export default function Header() {
                         border: 1px solid green;
                     }
 
+                    #HeaderBarsContainer {
+                        display: flex;
+                        position: relative;
+                        justify-content: center;
+                        align-items-center;
+                    }
+
                     #HeaderLeftContainer {
                         display: flex;
                         position: relative;
